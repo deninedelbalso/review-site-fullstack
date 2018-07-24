@@ -1,0 +1,6 @@
+<h3>You just removed a tag with an Ajax request </h3> 
+<h4>Our updated list of tags is now... </h4>
+
+<li th:each="tag : ${tagsModel}">
+<a th:href="@{/tag{id=${tag.id}}}" th:text="${tag.description}"></a>
+</li>

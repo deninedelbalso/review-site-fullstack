@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Review {
@@ -22,6 +23,11 @@ public class Review {
 
 	@ManyToOne // entity to data type
 	private Category beverage;
+	
+	
+	@OneToMany (mappedBy = "review")
+	private Collection<Comment>comments;
+
 
 	@ManyToMany
 	private Collection<Tag> tags;  //we want to track reviews by tags, doing this by mapping them, mapped by is on the field that owns 
@@ -63,6 +69,11 @@ public class Review {
 	public Category getBeverage() {
 		return beverage;
 	}
+	
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -86,4 +97,16 @@ public class Review {
 		return true;
 	}
 
-}
+	//allowing the Collection to add this tag we created in our forms
+	public void addTag(Tag newTag) {
+		tags.add(newTag)	;	
+	}
+
+	//allowing the collection to have a tag removed
+	public void removeTag(Tag tagToRemove) {
+		tags.remove(tagToRemove);
+		
+	}
+
+	}
+

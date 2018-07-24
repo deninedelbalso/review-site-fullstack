@@ -23,8 +23,60 @@
 	 <h3>Tags associated with this review</h3>
 	 <div th:each="tag: ${review.tags}">
 	 	<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
-	 </div>
+     </div>
 	 
+	 
+	  <h3>Tags associated with this review</h3>
+	 <div th:each="tag: ${review.tags}">
+	 	<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
+      </div>
+      
+      <form method = "POST">
+      <input name ="reviewId" type="hidden" th:value"${review.id}"/>
+     <input type="text" name="tagName" />
+     <button th:formaction="@(/add-tag)>add tag with html forms</button>
+      </form>
+      
+      <form method = "POST">
+	    <input name ="reviewId" type="hidden" th:value"${review.id}"/>
+	    <ul>
+	    <li th:each="tag: ${review.tags}"><span th:text="${tag.description}"></span>
+	    <buttton id="x" name="tagId" th:value=${tag.id}" th:formaction="@{remove-tag-button}">&times;</button>
+	    
+	    </ul>
+	
+	 
+	 </div class ="add-comment">
+	 <form method="POST>
+	 <section>
+	 <label>Enter your name:</label>
+	 <input type="text" name ="author"/>
+	 </section>
+	 
+	 	 </div class ="add-comment">
+	 <form method="POST>
+	 <section>
+	 <label>What do you think of this review?</label>
+	 <input type="text" name ="content"/>
+	 </section>
+	 
+	 <section>
+	 <input type="hidden" th:value="${reviewsModel.id}" name = "reviewId"/>
+	 </section>
+	 
+	 	 
+	 <section>
+	 <button th:formaction="@{/add-comment}">Add Comment</button>
+	 </section>
+	 
+	 </form>
+	 
+	</div> 
+	
+	<div th:each"comment: ${reviewsModel.comments}">
+	<h5><span th:text="${comment.author}">Commenter</span>says...</h5>
+	<p th:text="${comment.content}"></p>
+	 </div> 
 	 <a href="http://localhost:8080/reviews">Back to home</a>
         
 </body>
