@@ -22,8 +22,8 @@ public class ReviewController {
 	TagRepository tagRepo;
 
 	@RequestMapping("/review")
-	public String find1Review(@RequestParam(value = "id") long review1Id, Model model) throws ReviewNotFoundException {
-		Optional<Review> review = reviewRepo.findById(review1Id);
+	public String find1Review(@RequestParam(value = "id") long reviewId, Model model) throws ReviewNotFoundException {
+		Optional<Review> review = reviewRepo.findById(reviewId);
 
 		if (review.isPresent()) {
 			model.addAttribute("reviewsModel", review.get());

@@ -1,10 +1,25 @@
 .headingsMidsize{ 
     display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
+    font-weight: bold;
+    color: Black;
+}
+
+.headingsSmall{ 
+    display: block;
     font-weight: bold;
     color: Gray;
+    
+}   
+    
+.headingsLarge{ 
+    display: block;
+    font-weight: bold;
+    color: Black;
+    border-top: solid #e7ce00 medium;
+	border-bottom: dotted #e7ce00 thin;
+}
+
+.image{ 
+   height: 100px;
+    width: 500px;
 }

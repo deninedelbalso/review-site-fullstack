@@ -6,7 +6,7 @@
     <title>categories</title>
 </head>
 <body>
-    <h2>Our Categories</h2>
+    <h2 class="headingsMidsize">Our Categories</h2>
     <div th:each="category: ${categoriesModel}">
         <a th:href="@{/category(id=${category.id})}" th:text="${category.beverage}"></a>
         </div>

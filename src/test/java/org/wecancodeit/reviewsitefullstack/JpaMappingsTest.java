@@ -180,48 +180,45 @@ public class JpaMappingsTest {
 		assertThat(hot.getReviews(), containsInAnyOrder(dunkin, starbucks));
 	}
 	
-	@Test
-	public void shouldHaveTwoCommentsOnOneReview() {
-		Category coffee = new Category("Coffee");
-		Tag hot = new Tag("Hot");
-		coffee = categoryRepo.save(coffee);
-		hot = tagRepo.save(hot);
-		Review review = new Review("Test Review", "Stuff about review", "image url", coffee, hot);
-		review = reviewRepo.save(review);
-		long reviewId = review.getId();
-		
-		Comment testCommentOne = new Comment("Author", review, "Comment1");
-		testCommentOne = commentRepo.save(testCommentOne);
-		long testCommentOneId= testCommentOne.getId();
 
-		Comment testCommentTwo = new Comment("Author2", review, "Comment2");
-		testCommentTwo = commentRepo.save(testCommentTwo);
-		long testCommentTwoId= testCommentTwo.getId();
-
+	@Test 
+	public void shouldHaveTwoCommentsOnOneReview( ) {
+		Category coffee = new Category("Coffee"); 
+		Tag hot = new Tag("Hot"); 
+		coffee = categoryRepo.save(coffee); 
+		hot = tagRepo.save(hot); 
+		Review review = new Review("Test Review", "stuff about review", "img", coffee, hot); 
+		review = reviewRepo.save(review); 
+		long reviewId = review.getId(); 
 		
-		entityManager.flush();
-		entityManager.clear();
-		
-		Iterable<Comment> comments = commentRepo.findAll();
-		assertThat(comments, containsInAnyOrder(testCommentOne,testCommentTwo));
-		Optional<Comment> testComment1Result = commentRepo.findById(testCommentOneId);
-		testCommentOne = testComment1Result.get();
-		Optional<Comment>testComment2Result= commentRepo.findById(testCommentTwoId);
-		testCommentTwo = testComment2Result.get();
-		Optional<Review>reviewResult= reviewRepo.findById(reviewId);
-		review = reviewResult.get();
-		
-		assertThat(testCommentOne.getAuthor(), is("Author"));
-		assertThat(testCommentTwo.getAuthor(), is("Author2"));
-		assertThat(testCommentOne.getReview(), is(review));
-		assertThat(testCommentTwo.getReview(), is(review));
-		assertThat(review.getComments(), containsInAnyOrder("testCommentOne", "testCommentTwo"));
-
+		Comment testComment1 = new Comment("Author", review, "Comment1"); 
+		testComment1 = commentRepo.save(testComment1); 
+		long testComment1Id = testComment1.getId(); 
 		
 
-
-
+		Comment testComment2 = new Comment("Author2", review, "Comment2"); 
+		testComment2 = commentRepo.save(testComment2);
+		long testComment2Id = testComment2.getId(); 
+		
+		entityManager.flush(); 
+		entityManager.clear(); 
+		
+		Iterable<Comment> comments = commentRepo.findAll(); 
+		assertThat(comments, containsInAnyOrder(testComment1, testComment2)); 
+		
+		Optional<Comment> testComment1Result = commentRepo.findById(testComment1Id); 
+		testComment1 = testComment1Result.get(); 
+		
+		Optional<Comment> testComment2Result = commentRepo.findById(testComment2Id); 
+		testComment2 = testComment2Result.get();
+		
+		Optional<Review> reviewResult = reviewRepo.findById(reviewId); 
+		review = reviewResult.get(); 
+		assertThat(testComment1.getAuthor(), is("Author")); 
+		assertThat(testComment2.getAuthor(), is("Author2")); 
+		assertThat(testComment1.getReview(), is(review)); 
+		assertThat(testComment2.getReview(), is(review)); 
+		assertThat(review.getComments(), containsInAnyOrder(testComment1, testComment2)); 
+		
 	}
-
-
 }

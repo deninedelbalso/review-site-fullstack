@@ -8,7 +8,7 @@
 <body>
 <div class = "container">
 <header>
-<h1>Tags Page</h1>
+<h1 class = "headingsLarge">Tags Page</h1>
 </header>
 
 <div>
@@ -24,7 +24,7 @@
 </section>
 
 <section class="tags-list">
-<h2>Here is a list of our current tags:</h2>
+ <h2 class="headingsMidsize">Here is a list of our current tags:</h2>
 <ul>
 <li th:if="$tags.Model.size()==0"> Currently no tags...please add one!</li>
 <li th:if="$tags.Model.size()!==0">th:each="tag: ${tagsModel}">

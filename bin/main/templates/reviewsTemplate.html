@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<h2 class="headingsMidsize">A List of Reviews</h2>
+ <h2 class="headingsMidsize">A List of Reviews</h2>
 	
 	<div th:each="review: ${reviewsModel}">
 		<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
