@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
+
 	<title>reviews</title>
 </head>
 
@@ -41,8 +41,7 @@
 	    <input name ="reviewId" type="hidden" th:value"${review.id}"/>
 	    <ul>
 	    <li th:each="tag: ${review.tags}"><span th:text="${tag.description}"></span>
-	    <buttton id="x" name="tagId" th:value=${tag.id}" th:formaction="@{remove-tag-button}">&times;</button>
-	    
+	    <buttton id="x" name="tagId" th:value="${tag.id}" th:formaction="@{remove-tag-button}">&times;</button>
 	    </ul>
 	
 	 
