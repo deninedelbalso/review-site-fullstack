@@ -38,7 +38,7 @@ public class Review {
 		this.description = description;
 		this.image = image;
 		this.beverage = beverage;
-		this.tags = new HashSet(Arrays.asList(tags));
+		this.tags = new HashSet<>(Arrays.asList(tags));
 	}
 
 	public Review() {

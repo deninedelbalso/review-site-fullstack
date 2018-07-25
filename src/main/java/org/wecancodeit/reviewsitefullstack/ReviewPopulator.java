@@ -37,10 +37,14 @@ import org.springframework.stereotype.Component;
 			Category tea = new Category("Tea");
 			tea = categoryRepo.save(tea);
 
-			reviewRepo.save(new Review("Dunkin Donuts", "So good 24-7", "/images/dunkin.jpg", coffee, hot, cold, nonAlcoholic));
-			reviewRepo.save(new Review("Starbucks", "A little pricey", "/images/starbucks.jpg", coffee, hot, cold, nonAlcoholic));
-			reviewRepo.save(new Review("Bud Light", "Much needed", "/images/budlight.jpg", beer, cold, nonAlcoholic));
-			reviewRepo.save(new Review("Nestea", "Refreshing!", "/images/nestea.jpg", tea, cold, nonAlcoholic));
+			 reviewRepo.save(new Review("Dunkin Donuts", "Best darned coffee ever", "/images/dunkin.jpg", coffee, hot, cold, nonAlcoholic));
+	    	 reviewRepo.save(new Review("Starbucks", "Ew. I'll pass.", "/images/starbucks.jpg", coffee, hot, cold, nonAlcoholic)); 
+	    	 reviewRepo.save(new Review("Budweiser", "Classic and refreshing", "/images/budlight.jpg", beer, cold, alcoholic)); 
+	    	 reviewRepo.save(new Review("Miller Lite", "More classic and refreshing than Bud Light", "/images/miller.jpg", beer, cold, alcoholic));
+	    	 reviewRepo.save(new Review("Tazo Green Tea", "Better than water!", "/images/tazo.jpg", tea, hot, cold, nonAlcoholic)); 
+	    	 reviewRepo.save(new Review("Lipton", "Sweet goodness!", "/images/lipton.jpg", tea, hot, cold, nonAlcoholic));  
+	    	 reviewRepo.save(new Review("Im okay spilling this on me!", "/images/white.jpg", wine, cold, alcoholic)); 
+	    	 reviewRepo.save(new Review("Cabernet", "Perfect paired with a steak or desert", "/images/red.jpg", wine, cold, alcoholic)); 
 
 		}
 

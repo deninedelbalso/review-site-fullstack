@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity // the magic of jpa connects the category to the repository
@@ -14,11 +13,12 @@ public class Category {
 	@Id
 	@GeneratedValue
 	private long id;
+	
+	private String beverage;
 
 	@OneToMany(mappedBy="beverage")
 	private Collection<Review>reviews;
 	
-	private String beverage;
 
 	public Category(String beverage) {
 		this.beverage = beverage;
